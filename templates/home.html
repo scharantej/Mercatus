@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>E-commerce App</title>
+</head>
+<body>
+<h1>Welcome to the E-commerce App</h1>
+<ul>
+{% for product in products %}
+<li>
+<a href="{{ url_for('product_details', product_id=product.id) }}">{{ product.name }}</a>
+<p>{{ product.description }}</p>
+<p>{{ product.price }}</p>
+<form action="{{ url_for('cart') }}" method="POST">
+<input type="hidden" name="product_id" value="{{ product.id }}">
+<input type="submit" value="Add to Cart">
+</form>
+</li>
+{% endfor %}
+</ul>
+</body>
+</html>
+
+
